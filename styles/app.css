@@ -1,0 +1,19 @@
+html, body{
+    margin: 0;
+
+}
+main{
+    display: flex;
+    height: 100vh;
+}
+
+#list{
+    flex: 2;
+    background-color: rgb(67, 103, 130);
+}
+
+#form{
+    flex: 1;
+    background-color: beige;
+    padding: 10px 20px;
+}
