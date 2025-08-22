@@ -17,3 +17,33 @@ main{
     background-color: beige;
     padding: 10px 20px;
 }
+
+.task{
+    margin: 10px 20px;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    box-shadow: -1px 1px 3px 6px;
+    background-color: white;
+    display: flex;
+    align-items: center; /* Vertically center content */
+}
+
+.task .info{
+    flex: 3; /* Give more space to the title/description */
+}
+
+.task .status{
+    flex: 1;
+    text-align: center;
+}
+
+.task .date-budget{
+    flex: 1;
+    text-align: right;
+}
+
+/* Target labels inside .date-budget to stack them */
+.task .date-budget label{
+    display: block;
+}
