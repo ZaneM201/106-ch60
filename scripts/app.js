@@ -10,10 +10,25 @@ function toggleVisibility(){
     }
 }
 
+function testRequest(){
+    $.ajax({
+        type: "GET",//case dosent matter under ajax
+        url: "http://jsonplaceholder.typicode.com/posts/1",
+        dataType: "json",
+        success: function(response){
+            console.log("Request Successfull");
+            console.log(response);
+        },
+        error: function(error){
+            console.error("Request Failed");
+            console.error(error);
+        }
+
+    })
+}
+
 function saveTask(){
-    console.log("hello Im the saveTask");
     // get the value of the input
-    const isImportant = true;
     const title = $("#txtTitle").val().trim();
     const desc = $("#txtDescription").val().trim();
     const color = $("#selColor").val().trim();
@@ -21,8 +36,8 @@ function saveTask(){
     const status = $("#selStatus").val().trim();
     const budget = $("#numBudget").val().trim();
     // create a new task object
-    let taskToSave = new Task(isImportant, title, desc, color, date, status, budget );
-    console.log(taskToSave);
+    let taskToSave = new Task(title, desc, color, date, status, budget );
+    console.log(taskToSave);// for testing
     //add the task to the list
     displayTask(taskToSave);
 }
@@ -45,8 +60,17 @@ function displayTask(task){
     $(".pending-list").append(syntax);
 }
 
-function init(){
+import API from "./api.js"
+async function init(){
     console.log("hello I am the init");
+    try{
+        const task = await API.getTask();
+        task.forEach(displayTask);
+        console.log("loading");
+    }catch(err){
+        console.warn(err.message);
+        
+    }
     // hooks
     $("#btnAdd").click(saveTask);
     $("#btnDetails").click(toggleVisibility);

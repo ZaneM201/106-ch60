@@ -1,12 +1,11 @@
 class Task{
-    constructor(important, title, desc, color, startDate, status, budget){
-        this.important = important;
+    constructor(title, desc, color, startDate, status, budget){
         this.title = title;
         this.desc = desc;
         this.color = color;
         this.startDate = startDate;
         this.status = status;
         this.budget = budget;
-        this.name = "Zane"
+        this.name = "Zane"  //you can assing default properties
     }   
 }
